@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fruit Slicer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .fruit {
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      cursor: pointer;
+    }
+    .fruit:active {
+      transform: scale(0.95);
+    }
+    .hidden {
+      display: none;
+    }
+    /* Visual enhancements */
+    .card {
+      background: rgba(194, 231, 202, 0.6);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(77, 224, 175, 0.08), 0 2px 6px rgba(0,0,0,0.06);
+    }
+    .fruit-img {
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .fruit-img:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.14);
+    }
+    /* Restart button glow and gradient */
+    .fancy-btn {
+      background: linear-gradient(90deg,#568567 0%, #10b981 100%);
+      box-shadow: 0 6px 20px rgba(16,185,129,0.18);
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+    .fancy-btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 30px rgba(75, 185, 149, 0.25);
+    }
+    /* Animated gradient headline */
+    .title-gradient {
+      background: linear-gradient(90deg, #4cb372, #06b6d4, #f97316);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      background-size: 200% 100%;
+      animation: shimmer 4s linear infinite;
+      text-shadow: 0 6px 18px rgba(6,95,70,0.06);
+      transition: transform 0.18s ease, text-shadow 0.18s ease;
+    }
+    .title-gradient:hover {
+      transform: translateY(-4px) scale(1.02);
+      text-shadow: 0 14px 30px rgba(6,95,70,0.12);
+    }
+    @keyframes shimmer {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-green-100 to-yellow-100 min-h-screen flex flex-col items-center justify-center">
+
+  <h1 class="text-3xl font-bold mb-6 title-gradient">Fruit Slicer</h1>
+
+  <!-- Fruits and restart grouped together so the button sits close below the images -->
+  <div class="card flex flex-col items-center gap-4 mb-8">
+    <div class="flex gap-12">
+      <!-- Apple Container -->
+      <div class="flex flex-col items-center">
+  <img id="appleFull" src="apple-full.png.jpg" alt="Full Apple" class="fruit fruit-img w-32">
+  <img id="appleHalf" src="apple-half.png.jpg" alt="Sliced Apple" class="fruit fruit-img w-32 hidden">
+        <p class="text-lg mt-2 text-green-800 font-semibold">Apple</p>
+      </div>
+
+      <!-- Banana Container -->
+      <div class="flex flex-col items-center">
+  <img id="bananaFull" src="banana-full.png.jpg" alt="Full Banana" class="fruit fruit-img w-32">
+  <img id="bananaHalf" src="banana-half.png.jpg" alt="Sliced Banana" class="fruit fruit-img w-32 hidden">
+        <p class="text-lg mt-2 text-yellow-800 font-semibold">Banana</p>
+      </div>
+
+      <!-- Orange Container -->
+      <div class="flex flex-col items-center">
+  <img id="orangeFull" src="orange-full.png.jpg" alt="Full Orange" class="fruit fruit-img w-32">
+  <img id="orangeHalf" src="orange-half.png.jpg" alt="Sliced Orange" class="fruit fruit-img w-32 hidden">
+        <p class="text-lg mt-2 text-orange-800 font-semibold">Orange</p>
+      </div>
+    </div>
+
+    <!-- Restart button placed directly under the fruits with a small gap -->
+    <button id="resetBtn" class="mt-2 px-5 py-2 text-white rounded-lg fancy-btn">
+      🔁 Restart
+    </button>
+  </div>
+
+  <script>
+    // Apple image toggle logic
+    const appleFull = document.getElementById('appleFull');
+    const appleHalf = document.getElementById('appleHalf');
+    const bananaFull = document.getElementById('bananaFull');
+    const bananaHalf = document.getElementById('bananaHalf');
+    const orangeFull = document.getElementById('orangeFull');
+    const orangeHalf = document.getElementById('orangeHalf');
+    const resetBtn = document.getElementById('resetBtn');
+
+    appleFull.addEventListener('click', () => {
+      appleFull.classList.add('hidden');
+      appleHalf.classList.remove('hidden');
+    });
+    bananaFull.addEventListener('click', () => {
+      bananaFull.classList.add('hidden');
+      bananaHalf.classList.remove('hidden');
+    });
+    orangeFull.addEventListener('click', () => {
+      orangeFull.classList.add('hidden');
+      orangeHalf.classList.remove('hidden');
+    });
+    resetBtn.addEventListener('click', () => {
+      appleHalf.classList.add('hidden');
+      appleFull.classList.remove('hidden');
+      bananaHalf.classList.add('hidden');
+      bananaFull.classList.remove('hidden');
+      orangeHalf.classList.add('hidden');
+      orangeFull.classList.remove('hidden');
+    });
+  </script>
+
+</body>
+</html>

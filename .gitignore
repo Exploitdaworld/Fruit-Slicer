@@ -1,0 +1,14 @@
+.DS_Store
+Thumbs.db
+.vscode/
+__pycache__/
+*.pyc
+.env
+node_modules/
+*.log
+
+# OS generated files
+desktop.ini
+
+# Optional: ignore large image assets if you plan to store them elsewhere
+# assets/images/
