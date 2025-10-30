@@ -29,9 +29,5 @@ python -m http.server 8000; Start-Process http://localhost:8000
 - Add sound effects for slices and restarts.
 - Make the layout responsive for mobile with stacked fruits.
 
-## License
-MIT — feel free to reuse and modify.
-
 ---
 
-If you'd like a different README text (more technical details, license text, or badges), tell me and I can update it.
